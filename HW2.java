@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- * @author TODO: please add student ID and name here
+ * @author TODO: b0544211 游彥璋
  * Try to write some comments for your codes (methods, 15 points)
  */
 public class HW2 {
@@ -64,13 +64,25 @@ public class HW2 {
 
 }
 /**
- * Description: TODO: please add description here
+ * Description: TODO: 建三個迴圈分別由外到內是幾副牌、花色、數字
  */
 class Deck{
 	private ArrayList<Card> cards;
 	//TODO: Please implement the constructor (30 points)
 	public Deck(int nDeck){
 		cards=new ArrayList<Card>();
+		int number , kind , n ;
+		for (n=1 ; n <= nDeck ; n++)
+		{
+			for (kind=1 ; kind <5 ; kind++)
+			{
+				for(number = 1 ; number<14 ; number++)
+				{
+					Card card = new Card (kind , number);
+					cards.add(card);
+				}
+			}
+		}
 		//1 Deck have 52 cards, https://en.wikipedia.org/wiki/Poker
 		//Hint: Use new Card(x,y) and 3 for loops to add card into deck
 		//Sample code start
@@ -81,6 +93,12 @@ class Deck{
 	}	
 	//TODO: Please implement the method to print all cards on screen (10 points)
 	public void printDeck(){
+		int n ;
+		for(n=0 ; n<cards.size(); n++)
+		{
+			Card pokecard = cards.get(n);
+			pokecard.printCard();
+		}
 		//Hint: print all items in ArrayList<Card> cards, 
 		//TODO: please implement and reuse printCard method in Card class (5 points)
 
@@ -90,7 +108,7 @@ class Deck{
 	}
 }
 /**
- * Description: TODO: please add description here
+ * Description: TODO: 建立兩個陣列，分別是花色陣列跟數字陣列，並分別用位置呼叫兩個陣列
  */
 class Card{
 	private int suit; //Definition: 1~4, Clubs=1, Diamonds=2, Hearts=3, Spades=4
@@ -105,8 +123,9 @@ class Card{
 	}	
 	//TODO: 1. Please implement the printCard method (20 points, 10 for suit, 10 for rank)
 	public void printCard(){
-		//Hint: print (System.out.println) card as suit,rank, for example: print 1,1 as Clubs Ace
-
+		  String sarray []= {"Clubs","Diamonds","Hearts", "Spades"};
+		  String rarray []= {"ACE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN","J","Q","K"};
+		  System.out.println(sarray [suit-1]+","+rarray [rank-1]);
 	}
 	public int getSuit(){
 		return suit;
@@ -115,3 +134,4 @@ class Card{
 		return rank;
 	}
 }
+
